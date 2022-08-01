@@ -1,0 +1,22 @@
+<div class='col-lg-9'>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Ticker</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @my_stock.each do |stocked|%>
+    <tr>
+      <th scope="row"><%=stocked.ticker%></th>
+      <td><%=stocked.name%></td>
+      <td><%=stocked.last_price%></td>
+      <td>@mdo</td>
+    </tr>
+<%end%>
+  </tbody>
+</table>
+</div>

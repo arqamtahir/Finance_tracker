@@ -1,7 +1,24 @@
 <% if @stock%>
+
      <div class="card card-header results">
       <strong>Symbol :</strong><%=@stock.ticker%>
       <strong>name :</strong><%=@stock.name%>
       <strong>last price:</strong><%=@stock.last_price%>
-    </div> 
+      <% if  current_user.can_stock?(@stock.ticker)%>
+      <%=link_to 'Add to Portfolio' ,user_stocks_path(user: current_user ,ticker: @stock.ticker),
+                                                      method: :post, class: "btn btn-success" %>
+      <%else%>
+      <span class="lbadge badge-secondary ">
+      Yor are already tracking
+      <%if !current_user.under_stock_limit?%>
+       10 stock
+       <%end%>
+      <% if current_user.stock_already_tracked?(@stock.ticker)%>
+       this stock
+      <% end %>
+      </span>
+      
+      <%end%>
+    </div>
+    
  <%end%>

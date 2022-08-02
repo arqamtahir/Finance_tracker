@@ -20,4 +20,9 @@ def self.new_lookup(ticker_symbol)
       
 end
 
+
+def self.db_check(ticker_symbol)
+  where(ticker: ticker_symbol ).first
+ end
+
 end
